@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { APP_CONSTANTS } from '../../appconsts';
 import { BrowserRouter as Router } from "react-router-dom"
 import { useStyles } from './style';
+import { Container } from '@mui/material';
 
 
 const AppContainer = () => {
@@ -31,7 +32,9 @@ const AppContainer = () => {
                         </Toolbar>
                     </AppBar>
                 </Box>
-                <AppRoutes />
+                <Container maxWidth={false}>
+                    <AppRoutes />
+                </Container>
             </Router>
         </>
     );

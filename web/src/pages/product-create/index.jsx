@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { fetchCategories } from '../../redux/actions/category';
 import { useStyles } from './style';
 import { useDispatch } from 'react-redux'
+import { saveProduct } from '../../redux/actions/product';
 
 const ProductCreate = () => {
     const classes = useStyles();
@@ -28,8 +29,13 @@ const ProductCreate = () => {
         setProductName(event.target.value);
     };
 
-    const handleSave = () => {
-
+    const handleSave = async () => {
+        const product = {
+            name: productName,
+            category: selectedCategory
+        }
+        const result = await dispatch(saveProduct(product))
+        console.log(result)
     }
 
     return (

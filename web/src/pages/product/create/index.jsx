@@ -32,7 +32,7 @@ const ProductCreate = () => {
     const handleSave = async () => {
         const product = {
             name: productName,
-            category: selectedCategory
+            categories: selectedCategory
         }
         const result = await dispatch(saveProduct(product))
         console.log(result)

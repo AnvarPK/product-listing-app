@@ -1,4 +1,5 @@
-import { Grid, List, ListItem, ListItemText, Paper, Stack, Typography } from "@mui/material"
+import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material"
+import CategoryList from "../../components/category-list";
 import { useStyles } from "./style";
 
 const Products = () => {
@@ -13,11 +14,7 @@ const Products = () => {
                     </Typography>
                     <Grid container >
                         <Grid item xs={12} sm={6}>
-                            <Stack direction="row" spacing={2}>
-                                <Paper className={classes.paper}>wew</Paper>
-                                <Paper className={classes.paper}>wew</Paper>
-                                <Paper className={classes.paper}>wew</Paper>
-                            </Stack>
+                            <CategoryList />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -27,11 +24,7 @@ const Products = () => {
                     </Typography>
                     <Grid container >
                         <Grid item xs={12} sm={6}>
-                            <Stack direction="row" spacing={2}>
-                                <Paper className={classes.paper}>wew</Paper>
-                                <Paper className={classes.paper}>wew</Paper>
-                                <Paper className={classes.paper}>wew</Paper>
-                            </Stack>
+                            <CategoryList />
                         </Grid>
                     </Grid>
                 </Grid>

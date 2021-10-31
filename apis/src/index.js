@@ -1,6 +1,7 @@
 const express = require('express');
 require('./db');
 const CategoryRouter = require('./routers/category');
+const ProductRouter = require('./routers/product');
 
 const port = 3001;
 const app = express();
@@ -16,6 +17,7 @@ app.use(function (req, res, next) {
 app.use(express.json());
 
 app.use(CategoryRouter);
+app.use(ProductRouter);
 
 
 app.listen(port, () => {

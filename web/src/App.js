@@ -1,8 +1,11 @@
 import './App.css';
+import AppContainer from './pages/container';
 
 function App() {
   return (
-    <></>
+    <>
+      <AppContainer />
+    </>
   );
 }
 

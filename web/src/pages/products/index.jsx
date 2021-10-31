@@ -1,7 +1,7 @@
 const Products = () => {
     return (
         <div>
-            Category crete page
+            Product list page
         </div>
     )
 }

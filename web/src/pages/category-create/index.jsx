@@ -1,7 +1,7 @@
 const CategoryCreate = () => {
     return (
         <div>
-            Category crete page
+            Category create page
         </div>
     )
 }

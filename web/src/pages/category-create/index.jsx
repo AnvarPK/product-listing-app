@@ -35,7 +35,6 @@ const CategoryCreate = () => {
             parent: selectedCategory
         }
         const result = await dispatch(saveCategory(category))
-        console.log(result)
     }
 
     return (

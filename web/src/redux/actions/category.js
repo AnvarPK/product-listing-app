@@ -1,5 +1,5 @@
 import { APP_CONSTANTS } from "../../appconsts";
-import { GET_CATEGORIES } from "../consts";
+import { GET_CATEGORIES, requestPostOptions } from "../consts";
 
 export const getCategories = (data) => ({
     type: GET_CATEGORIES,
@@ -19,10 +19,14 @@ export const fetchCategories = () => {
     }
 }
 
-export const saveCategory = () => {
+export const saveCategory = (data) => {
     return async (dispatch) => {
         try {
-            const result = await (await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.SAVE_CATEGORY}`)).json();
+            const requestOptions = {
+                ...requestPostOptions,
+                body: JSON.stringify(data),
+            };
+            const result = await (await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.SAVE_CATEGORY}`, requestOptions)).json();
             return result;
         } catch (error) {
             console.log(error);

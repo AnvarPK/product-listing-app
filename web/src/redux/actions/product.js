@@ -1,13 +1,11 @@
 import { APP_CONSTANTS } from "../../appconsts";
+import { requestPostOptions} from '../consts';
 
 export const saveProduct = (data) => {
     return async (dispatch) => {
         try {
             const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                },
+                ...requestPostOptions,
                 body: JSON.stringify(data),
             };
             const result = await (await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.SAVE_PRODUCT}`, requestOptions)).json();

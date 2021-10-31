@@ -11,7 +11,6 @@ export const saveProduct = (data) => {
                 body: JSON.stringify(data),
             };
             const result = await (await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.SAVE_PRODUCT}`, requestOptions)).json();
-            // dispatch(getCategories(result));
             return result;
         } catch (error) {
             console.log(error);

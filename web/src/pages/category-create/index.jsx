@@ -2,11 +2,12 @@ import { TextField, Select, FormControl, MenuItem, InputLabel, Box, Button, Form
 import { useCallback, useEffect, useState } from 'react';
 import { useStyles } from './style';
 import { useDispatch } from 'react-redux'
-import { fetchCategories } from '../../redux/actions/category';
+import { fetchCategories, saveCategory } from '../../redux/actions/category';
 
 const CategoryCreate = () => {
 
     const [categories, setCategories] = useState([]);
+    const [categoryName, setCategoryName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const dispatch = useDispatch()
     const classes = useStyles();
@@ -24,12 +25,25 @@ const CategoryCreate = () => {
         setSelectedCategory(event.target.value);
     };
 
+    const handleCategoruNameChange = (event) => {
+        setCategoryName(event.target.value);
+    };
+
+    const handleSave = async () => {
+        const category = {
+            name: categoryName,
+            parent: selectedCategory
+        }
+        const result = await dispatch(saveCategory(category))
+        console.log(result)
+    }
+
     return (
         <>
             <Box maxWidth="sm" >
                 <FormGroup className={classes.formControl}>
                     <FormControl fullWidth >
-                        <TextField id="product-name" label="Category Name" variant="standard" />
+                        <TextField id="product-name" label="Category Name" variant="standard" value={categoryName} onChange={handleCategoruNameChange} />
                     </FormControl>
                 </FormGroup >
                 <FormGroup className={classes.formControl} >
@@ -55,7 +69,7 @@ const CategoryCreate = () => {
                 </FormGroup>
                 <Box className={classes.submitWraper} >
                     <FormControl  >
-                        <Button variant="contained" size="medium">
+                        <Button variant="contained" size="medium" onClick={handleSave}>
                             save
                         </Button>
                     </FormControl>

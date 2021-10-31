@@ -9,8 +9,8 @@ export const getCategories = (data) => ({
 export const fetchCategories = () => {
     return async (dispatch) => {
         try {
-            const result = await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.CATEGORIES}`);
-            console.log(result);
+            const result = await (await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.CATEGORIES}`)).json();
+            return result;
         } catch (error) {
             console.log(error);
             return [];

@@ -9,7 +9,7 @@ const CategoryList = (props) => {
         <>
             {
                 categories.map(category => (
-                    <Stack direction="row" spacing={2}>
+                    <Stack direction="row" spacing={2} key={category.name}>
                         <Paper className={classes.paper}>{category.name}</Paper>
                     </Stack>
                 ))

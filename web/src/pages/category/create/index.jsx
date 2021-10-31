@@ -1,41 +1,40 @@
 import { TextField, Select, FormControl, MenuItem, InputLabel, Box, Button, FormGroup } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCategories } from '../../redux/actions/category';
 import { useStyles } from './style';
 import { useDispatch } from 'react-redux'
-import { saveProduct } from '../../redux/actions/product';
+import { fetchCategories, saveCategory } from '../../../redux/actions/category';
 
-const ProductCreate = () => {
-    const classes = useStyles();
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const [productName, setProductName] = useState('');
+const CategoryCreate = () => {
+
     const [categories, setCategories] = useState([]);
+    const [categoryName, setCategoryName] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
     const dispatch = useDispatch()
+    const classes = useStyles();
 
-    const fetchData = useCallback(async () => {
+    const fetchCAtegoryData = useCallback(async () => {
         const categories = await dispatch(fetchCategories())
         setCategories(categories)
     }, [])
 
     useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        fetchCAtegoryData();
+    }, [fetchCAtegoryData]);
 
     const handleChange = (event) => {
         setSelectedCategory(event.target.value);
     };
 
-    const handleProductName = (event) => {
-        setProductName(event.target.value);
+    const handleCategoruNameChange = (event) => {
+        setCategoryName(event.target.value);
     };
 
     const handleSave = async () => {
-        const product = {
-            name: productName,
-            category: selectedCategory
+        const category = {
+            name: categoryName,
+            parent: selectedCategory
         }
-        const result = await dispatch(saveProduct(product))
-        console.log(result)
+        const result = await dispatch(saveCategory(category))
     }
 
     return (
@@ -43,12 +42,12 @@ const ProductCreate = () => {
             <Box maxWidth="sm" >
                 <FormGroup className={classes.formControl}>
                     <FormControl fullWidth >
-                        <TextField id="product-name" label="Product" variant="standard" value={productName} onChange={handleProductName} />
+                        <TextField id="product-name" label="Category Name" variant="standard" value={categoryName} onChange={handleCategoruNameChange} />
                     </FormControl>
                 </FormGroup >
                 <FormGroup className={classes.formControl} >
                     <FormControl variant="standard" fullWidth>
-                        <InputLabel id="cateegory-label">Category</InputLabel>
+                        <InputLabel id="cateegory-label">Parent Category</InputLabel>
                         <Select
                             labelId="category-select-label"
                             id="category-select"
@@ -79,4 +78,4 @@ const ProductCreate = () => {
     )
 }
 
-export default ProductCreate
+export default CategoryCreate

@@ -1,11 +1,11 @@
-import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import { useCallback, useEffect, useState } from "react";
-import CategoryList from "../../components/category-list";
+import CategoryList from "../../../components/category-list";
 import { useStyles } from "./style";
 import { useDispatch } from 'react-redux'
-import { fetchCategories } from '../../redux/actions/category';
-import { fetchProducts } from "../../redux/actions/product";
-import ProductList from "../../components/product-list";
+import { fetchCategories } from '../../../redux/actions/category';
+import { fetchProducts } from "../../../redux/actions/product";
+import ProductList from "../../../components/product-list";
 
 
 const Products = () => {

@@ -1,10 +1,8 @@
 const { Router } = require('express');
-const { saveProduct } = require('../controllers/product');
+const { saveProduct, getProducts } = require('../controllers/product');
 const router = Router();
 
-router.get('/products', (req, res) => {
-    res.send('products');
-});
+router.get('/products', getProducts);
 
 router.post('/product', saveProduct);
 

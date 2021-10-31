@@ -1,15 +1,17 @@
 const { STATUS_CODES } = require('../appconsts');
 const Product = require('../models/product');
 
-const getCategories = async (req, res) => {
+const getProducts = async (req, res) => {
     try {
-        const cateogories = await Product.find({});
-        res.status(STATUS_CODES.SUCESS).send(cateogories);
+        const products = await Product.find({});
+        res.status(STATUS_CODES.SUCESS).send(products);
     } catch (error) {
         console.log(error)
         res.status(500).send(error);
     }
 }
+
+
 const saveProduct = async (req, res) => {
     try {
         const product = new Product({
@@ -27,6 +29,6 @@ const saveProduct = async (req, res) => {
 
 
 module.exports = {
-    getCategories,
+    getProducts,
     saveProduct
 };

@@ -7,11 +7,27 @@ const getCategories = async (req, res) => {
         res.status(STATUS_CODES.SUCESS).send(cateogories);
     } catch (error) {
         console.log(error)
-        res.status(500).send(error);
+        res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
+    }
+}
+
+const saveCategory = async (req, res) => {
+    console.log(req)
+    try {
+        const category = new Category({
+            name: req.body.name,
+            parent: req.body.parent,
+        });
+        await category.save();
+
+        res.status(STATUS_CODES.SUCESS).send(category);
+    } catch (error) {
+        console.log(error)
+        res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
     }
 }
 
 module.exports = {
     getCategories,
-    
+    saveCategory
 };

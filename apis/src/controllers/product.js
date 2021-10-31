@@ -7,7 +7,7 @@ const getProducts = async (req, res) => {
         res.status(STATUS_CODES.SUCESS).send(products);
     } catch (error) {
         console.log(error)
-        res.status(500).send(error);
+        res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
     }
 }
 
@@ -23,7 +23,7 @@ const saveProduct = async (req, res) => {
         res.status(STATUS_CODES.SUCESS).send(product);
     } catch (error) {
         console.log(error)
-        res.status(500).send(error);
+        res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).send(error);
     }
 }
 

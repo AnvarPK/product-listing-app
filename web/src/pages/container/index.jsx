@@ -32,9 +32,11 @@ const AppContainer = () => {
                         </Toolbar>
                     </AppBar>
                 </Box>
-                <Container maxWidth={false}>
-                    <AppRoutes />
-                </Container>
+                <Box mt={2}>
+                    <Container maxWidth={false} >
+                        <AppRoutes />
+                    </Container>
+                </Box>
             </Router>
         </>
     );

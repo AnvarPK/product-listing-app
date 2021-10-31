@@ -3,7 +3,8 @@ export const APP_CONSTANTS = {
         URL: 'http://localhost:3001',
         ENDPOINTS: {
             CATEGORIES: '/categories',
-            SAVE_PRODUCT:'/product'
+            SAVE_PRODUCT:'/product',
+            PRODUCTS: '/products',
         }
     },
     ROUTES: {

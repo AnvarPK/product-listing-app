@@ -4,11 +4,14 @@ import CategoryList from "../../components/category-list";
 import { useStyles } from "./style";
 import { useDispatch } from 'react-redux'
 import { fetchCategories } from '../../redux/actions/category';
+import { fetchProducts } from "../../redux/actions/product";
+import ProductList from "../../components/product-list";
 
 
 const Products = () => {
     const classes = useStyles();
     const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
     const dispatch = useDispatch()
 
     const fetchData = useCallback(async () => {
@@ -16,9 +19,19 @@ const Products = () => {
         setCategories(categories)
     }, [])
 
+    const fetchProductsData = useCallback(async () => {
+        const products = await dispatch(fetchProducts())
+        setProducts(products)
+    }, [])
+
     useEffect(() => {
         fetchData();
     }, [fetchData]);
+
+    useEffect(() => {
+        fetchProductsData();
+    }, [fetchProductsData]);
+
 
     return (
         <>
@@ -50,18 +63,7 @@ const Products = () => {
                     </Typography>
                     <Grid container >
                         <Grid item xs={12} sm={6}>
-                            <List className={classes.list}>
-                                <ListItem className={classes.listItem}>
-                                    <ListItemText
-                                        primary="Single-line item"
-                                    />
-                                </ListItem>
-                                <ListItem className={classes.listItem}>
-                                    <ListItemText
-                                        primary="Single-line item"
-                                    />
-                                </ListItem>
-                            </List>
+                            <ProductList  products={products}/>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,9 +1,25 @@
 import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material"
+import { useCallback, useEffect, useState } from "react";
 import CategoryList from "../../components/category-list";
 import { useStyles } from "./style";
+import { useDispatch } from 'react-redux'
+import { fetchCategories } from '../../redux/actions/category';
+
 
 const Products = () => {
     const classes = useStyles();
+    const [categories, setCategories] = useState([]);
+    const dispatch = useDispatch()
+
+    const fetchData = useCallback(async () => {
+        const categories = await dispatch(fetchCategories())
+        setCategories(categories)
+    }, [])
+
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
+
     return (
         <>
 
@@ -14,7 +30,7 @@ const Products = () => {
                     </Typography>
                     <Grid container >
                         <Grid item xs={12} sm={6}>
-                            <CategoryList />
+                            <CategoryList categories={categories} />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -24,7 +40,7 @@ const Products = () => {
                     </Typography>
                     <Grid container >
                         <Grid item xs={12} sm={6}>
-                            <CategoryList />
+                            <CategoryList categories={categories} />
                         </Grid>
                     </Grid>
                 </Grid>

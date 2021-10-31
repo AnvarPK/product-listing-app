@@ -6,9 +6,19 @@ export const getCategories = (data) => ({
     payload: data
 });
 
-export const fetchCategories = async () => {
+export const fetchCategories = () => {
     return async (dispatch) => {
-        const result = await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.CATEGORIES}`);
-        console.log(result);
+        try {
+            const result = await fetch(`${APP_CONSTANTS.API.URL}${APP_CONSTANTS.API.ENDPOINTS.CATEGORIES}`, {
+                method: 'GET',
+                header: {
+                    "Access-Control-Allow-Origin": "*"
+                }
+            });
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
     }
 }

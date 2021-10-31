@@ -1,17 +1,20 @@
 import React from 'react'
-import { Paper, Stack} from "@mui/material"
+import { Paper, Stack } from "@mui/material"
 import { useStyles } from './style';
 
-const CategoryList = () => {
+const CategoryList = (props) => {
+    const { categories } = props;
     const classes = useStyles();
     return (
-        <div>
-            <Stack direction="row" spacing={2}>
-                <Paper className={classes.paper}>wew</Paper>
-                <Paper className={classes.paper}>wew</Paper>
-                <Paper className={classes.paper}>wew</Paper>
-            </Stack>
-        </div>
+        <>
+            {
+                categories.map(category => (
+                    <Stack direction="row" spacing={2}>
+                        <Paper className={classes.paper}>{category.name}</Paper>
+                    </Stack>
+                ))
+            }
+        </>
     )
 }
 

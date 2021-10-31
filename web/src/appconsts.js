@@ -1,6 +1,6 @@
 export const APP_CONSTANTS = {
     API: {
-        URL: 'http://localhost:3000',
+        URL: 'http://localhost:3001',
         ENDPOINTS: {
             CATEGORIES: '/categories',
         }
